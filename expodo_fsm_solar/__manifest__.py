@@ -1,0 +1,20 @@
+{
+    "name": "Solar Panel Field Service",
+    "summary": "Field service for solar PV: array and inverter tracking, installation, maintenance, performance checks and invoicing",
+    "description": "Turn Odoo Community into a service tool for solar and photovoltaic installers. Log each array, its panels, inverter, battery storage and grid connection, follow the job from install or breakdown to invoice, run performance and electrical safety checks, and let customers track their service online.",
+    "version": "18.0.1.0.0",
+    "category": "Services/Field Service",
+    "license": "LGPL-3",
+    "author": "Expodo",
+    "website": "https://expodo.fr",
+    "support": "support@expodo.fr",
+    "images": ["static/description/banner.png", "static/description/icon.png"],
+    "depends": ["expodo_fieldservice"],
+    "data": [
+        "data/solar_types.xml",
+        "views/solar_views.xml",
+    ],
+    "application": True,
+    "installable": True,
+    "auto_install": False,
+}
