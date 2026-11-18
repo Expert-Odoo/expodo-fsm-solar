@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form: Solar array, Inverter & grid, Performance & safety -->
+    <record id="view_fsm_order_form_solar" model="ir.ui.view">
+        <field name="name">expodo.fsm.order.form.solar</field>
+        <field name="model">expodo.fsm.order</field>
+        <field name="inherit_id" ref="expodo_fieldservice.view_fsm_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="before">
+                <group string="Solar Array" name="array">
+                    <group>
+                        <field name="installation_type"/>
+                        <field name="mounting_type"/>
+                        <field name="panel_brand"/>
+                        <field name="panel_model"/>
+                        <field name="panel_count"/>
+                        <field name="panel_wattage"/>
+                    </group>
+                    <group>
+                        <field name="array_power_kwp"/>
+                        <field name="roof_azimuth"/>
+                        <field name="roof_tilt"/>
+                        <field name="commissioning_date"/>
+                    </group>
+                </group>
+                <group string="Inverter &amp; Grid" name="inverter">
+                    <group>
+                        <field name="inverter_brand"/>
+                        <field name="inverter_model"/>
+                        <field name="inverter_type"/>
+                        <field name="string_count"/>
+                        <field name="serial_number"/>
+                    </group>
+                    <group>
+                        <field name="grid_connection"/>
+                        <field name="battery_storage"/>
+                        <field name="battery_capacity_kwh" invisible="not battery_storage"/>
+                    </group>
+                </group>
+                <group string="Performance &amp; Safety" name="performance">
+                    <group>
+                        <field name="expected_yield_kwh"/>
+                        <field name="measured_power_kw"/>
+                    </group>
+                    <group>
+                        <field name="insulation_test_done"/>
+                        <field name="earthing_check_done"/>
+                        <field name="string_test_done"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- List: add array columns -->
+    <record id="view_fsm_order_list_solar" model="ir.ui.view">
+        <field name="name">expodo.fsm.order.list.solar</field>
+        <field name="model">expodo.fsm.order</field>
+        <field name="inherit_id" ref="expodo_fieldservice.view_fsm_order_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="panel_brand" optional="show"/>
+                <field name="array_power_kwp" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Kanban: show brand and array power on the card -->
+    <record id="view_fsm_order_kanban_solar" model="ir.ui.view">
+        <field name="name">expodo.fsm.order.kanban.solar</field>
+        <field name="model">expodo.fsm.order</field>
+        <field name="inherit_id" ref="expodo_fieldservice.view_fsm_order_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fsm_type_id']" position="after">
+                <div t-if="record.panel_brand.raw_value" class="mt-1">
+                    <span class="badge text-bg-secondary"><field name="panel_brand"/></span>
+                    <span t-if="record.array_power_kwp.raw_value" class="badge text-bg-info ms-1">
+                        <field name="array_power_kwp"/> kWp
+                    </span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Solar app menu -->
+    <menuitem id="menu_root_solar" name="Solar Field Service" sequence="48"
+              groups="expodo_fieldservice.group_fsm_technician"/>
+    <menuitem id="menu_solar_orders" name="Service Orders"
+              parent="menu_root_solar" action="expodo_fieldservice.action_fsm_order" sequence="10"/>
+    <menuitem id="menu_solar_config" name="Configuration"
+              parent="menu_root_solar" sequence="90"
+              groups="expodo_fieldservice.group_fsm_manager"/>
+    <menuitem id="menu_solar_types" name="Intervention Types"
+              parent="menu_solar_config" action="expodo_fieldservice.action_fsm_type" sequence="10"/>
+    <menuitem id="menu_solar_stages" name="Stages"
+              parent="menu_solar_config" action="expodo_fieldservice.action_fsm_stage" sequence="20"/>
+
+</odoo>

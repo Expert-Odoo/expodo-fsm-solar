@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="type_install" model="expodo.fsm.type">
+            <field name="name">Installation</field>
+        </record>
+        <record id="type_install_s1" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_install"/><field name="sequence">10</field>
+            <field name="name">Mount rails and secure the panels</field></record>
+        <record id="type_install_s2" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_install"/><field name="sequence">20</field>
+            <field name="name">Wire the strings and run DC cabling</field></record>
+        <record id="type_install_s3" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_install"/><field name="sequence">30</field>
+            <field name="name">Install and configure the inverter</field></record>
+        <record id="type_install_s4" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_install"/><field name="sequence">40</field>
+            <field name="name">Commission and connect to the grid</field></record>
+
+        <record id="type_maintenance" model="expodo.fsm.type">
+            <field name="name">Preventive Maintenance</field>
+        </record>
+        <record id="type_maint_s1" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_maintenance"/><field name="sequence">10</field>
+            <field name="name">Clean the panels and check for soiling</field></record>
+        <record id="type_maint_s2" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_maintenance"/><field name="sequence">20</field>
+            <field name="name">Inspect mounting and fixings</field></record>
+        <record id="type_maint_s3" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_maintenance"/><field name="sequence">30</field>
+            <field name="name">Check cabling and connectors</field></record>
+        <record id="type_maint_s4" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_maintenance"/><field name="sequence">40</field>
+            <field name="name">Review inverter logs and alarms</field></record>
+
+        <record id="type_repair" model="expodo.fsm.type">
+            <field name="name">Repair / Breakdown</field>
+        </record>
+        <record id="type_repair_s1" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_repair"/><field name="sequence">10</field>
+            <field name="name">Diagnose the fault (panel, string or inverter)</field></record>
+        <record id="type_repair_s2" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_repair"/><field name="sequence">20</field>
+            <field name="name">Replace the faulty component</field></record>
+        <record id="type_repair_s3" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_repair"/><field name="sequence">30</field>
+            <field name="name">Retest the string and inverter</field></record>
+
+        <record id="type_inspection" model="expodo.fsm.type">
+            <field name="name">Performance Inspection</field>
+        </record>
+        <record id="type_insp_s1" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_inspection"/><field name="sequence">10</field>
+            <field name="name">Measure string voltage and current (I-V)</field></record>
+        <record id="type_insp_s2" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_inspection"/><field name="sequence">20</field>
+            <field name="name">Thermographic scan of the modules</field></record>
+        <record id="type_insp_s3" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_inspection"/><field name="sequence">30</field>
+            <field name="name">Compare output to expected yield</field></record>
+        <record id="type_insp_s4" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_inspection"/><field name="sequence">40</field>
+            <field name="name">Report underperforming strings</field></record>
+
+        <record id="type_commissioning" model="expodo.fsm.type">
+            <field name="name">Commissioning / Grid Connection</field>
+        </record>
+        <record id="type_comm_s1" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_commissioning"/><field name="sequence">10</field>
+            <field name="name">Verify DC and AC isolation</field></record>
+        <record id="type_comm_s2" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_commissioning"/><field name="sequence">20</field>
+            <field name="name">Run insulation and earthing tests</field></record>
+        <record id="type_comm_s3" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_commissioning"/><field name="sequence">30</field>
+            <field name="name">Configure grid settings and export limit</field></record>
+        <record id="type_comm_s4" model="expodo.fsm.type.checklist">
+            <field name="type_id" ref="type_commissioning"/><field name="sequence">40</field>
+            <field name="name">Hand over documents and monitoring access</field></record>
+
+    </data>
+</odoo>
